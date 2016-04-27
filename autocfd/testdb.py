@@ -1,10 +1,11 @@
 """Just some testing."""
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
 from base import Base
-import flotables
-import basetables
+import blade
+import airfoil
+import flosim
+import flosolver
 
 
 engine = create_engine('sqlite:///my_test_db.sqlite3')
@@ -15,9 +16,9 @@ session = Session()
 # Create table
 Base.metadata.create_all(engine)
 
-myblade = basetables.Blade()
-myairfoil = basetables.Airfoil(airfoil_name='jfoil')
-airfoil2 = basetables.Airfoil(airfoil_name='bfoil')
+myblade = blade.Blade()
+myairfoil = airfoil.Airfoil(airfoil_name='jfoil')
+airfoil2 = airfoil.Airfoil(airfoil_name='bfoil')
 
 myblade.airfoils.append(myairfoil)
 myblade.airfoils.append(airfoil2)
